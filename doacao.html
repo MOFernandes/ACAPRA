@@ -3,92 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOAÇÃO</title>
+    <title>Doação - Adote um Amigo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s, opacity 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        nav img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+            filter: brightness(0) invert(1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .paw-divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #8A2BE2;
+        }
+        
+        .paw-divider span {
+            font-size: 28px;
+            margin: 0 10px;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+        }
+        
+        .hero-section h1 {
+            color: #8A2BE2;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-section h2 {
+            color: #666;
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .donation-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .donation-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .donation-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0e6ff;
+            border-radius: 50%;
+            color: #8A2BE2;
+            font-size: 2.5rem;
+        }
+        
+        .donation-card h2 {
+            color: #8A2BE2;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .donation-card h3 {
+            color: #555;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .pix-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pix-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #8A2BE2, #9370DB);
+        }
+        
+        .pix-section h2 {
+            color: #8A2BE2;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .pix-info {
+            background: #f9f5ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            display: inline-block;
+        }
+        
+        .pix-info h3 {
+            color: #8A2BE2;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .pix-code {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 1px;
+            background: #f0e6ff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 15px 0;
+        }
+        
+        .pix-copy {
+            background: #8A2BE2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .pix-copy:hover {
+            background: #7a1bd2;
+            transform: translateY(-3px);
+        }
+        
+        .thank-you {
+            color: #8A2BE2;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-paws {
+            margin-bottom: 20px;
+        }
+        
+        .footer-paws span {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 900px) {
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            
+            .donation-section {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                gap: 15px;
+            }
+            
+            nav img {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .pix-section {
+                padding: 30px 20px;
+            }
+            
+            .pix-code {
+                font-size: 1.1rem;
+                padding: 12px 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .hero-section {
+                padding: 30px 15px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.2rem;
+            }
+            
+            .donation-card {
+                padding: 25px 20px;
+            }
+            
+            .donation-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .pix-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .thank-you {
+                font-size: 2rem;
+            }
+            
+            nav {
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 6px 8px;
+                font-size: 0.9rem;
+            }
+            
+            nav img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-     <header>
+    <header>
         <nav>
-            <a href="contato.html"><img src="assets/imagens/telefone.png" alt="CONTATO"></a>
-            <a href="sobre.html"><img src="assets/imagens/imagem.png" alt="SOBRE"></a>
-            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"></a>        
-            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"></a>
-            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"></a>
-            <a href="adocao.html"><img src="assets/imagens/lista.png" alt="ADOÇÃO"></a>
-            <a href="doacao.html"><img src="assets/imagens/doação.png" alt="DOAÇÃO"></a>
+            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"> INÍCIO</a>
+            <a href="sobre.html"><img src="assets/imagens/imagem.png" alt="SOBRE"> SOBRE</a>
+            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"> HISTÓRIA</a>        
+            <a href="adocao.html"><img src="assets/imagens/lista.png" alt="ADOÇÃO"> ADOÇÃO</a>
+            <a href="doacao.html" class="active"><img src="assets/imagens/doação.png" alt="DOAÇÃO"> DOAÇÃO</a>
+            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"> NOTÍCIAS</a>
+            <a href="contato.html"><img src="assets/imagens/telefone.png" alt="CONTATO"> CONTATO</a>
         </nav>
     </header>
+    
     <main>
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
-        <!--colocar as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
-                <h1>QUER NOS<br>AJUDAR?</h1>
-            </div>
-            <div>
-                <h2>Quer ajudar, mas não sabe como?<br>Aceitamos diferentes tipos de doação, incluindo:</h2>
-            </div>
+        <section class="hero-section">
+            <h1>QUER NOS<br>AJUDAR?</h1>
+            <h2>Quer ajudar, mas não sabe como?<br>Aceitamos diferentes tipos de doação, incluindo:</h2>
         </section>
 
-        <!--colocar as patas aq--> <!--CSS-->    
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
-        <section>
-            <div>
+        <div class="donation-section">
+            <div class="donation-card">
+                <div class="donation-icon">
+                    <i class="fas fa-bone"></i>
+                </div>
                 <h2>ALIMENTOS</h2>
+                <h3>Rações para cães e gatos é sempre necessário.</h3>
+                <img src="assets/imagens/ração.png" alt="Ração" width="80">
             </div>
-            <div>
-                <h2>Rações para cães e gatos é sempre necessário.</h2>
-            </div>
-            <div>
-                <img src="assets/imagens/ração.png" alt="ração" width="100px">
-            </div>
-        </section>
 
-
-        <!--colocar as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
+            <div class="donation-card">
+                <div class="donation-icon">
+                    <i class="fas fa-pills"></i>
+                </div>
                 <h2>REMÉDIOS</h2>
+                <h3>Produtos como vermífugos, antiparasitários e materiais de primeiros socorros são indispensáveis.</h3>
+                <img src="assets/imagens/remédio.png" alt="Remédios" width="80">
             </div>
-            <div>
-                <h2>Produtos como vermífugos, antiparasitários e materiais de primeiros socorros são indispensáveis.</h2>
-            </div>
-            <div>
-                <img src="assets/imagens/remédio.png" alt="remédio" width="100px">
-            </div>
-        </section>
 
-        <!--colocar as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
+            <div class="donation-card">
+                <div class="donation-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
                 <h2>OUTROS ITENS</h2>
+                <h3>Jornais, produtos de higiene e acessórios para pets (coleiras, camas, entre outros) são muito bem aproveitados.</h3>
+                <img src="assets/imagens/outros.png" alt="Outros itens" width="80">
             </div>
-            <div>
-                <h2>Jornais, produtos de higiene e acessórios para pets (coleiras, camas, entre outros) são muito bem aproveitados..</h2>
+        </div>
+
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
+
+        <section class="pix-section">
+            <h2>OU FAÇA UMA DOAÇÃO VIA PIX!!!</h2>
+            <div class="pix-info">
+                <h3>CNPJ</h3>
+                <div class="pix-code">03.722.251.0001-82</div>
             </div>
-            <div>
-                <img src="assets/imagens/outros.png" alt="outros" width="100px">
-            </div>
+            <button class="pix-copy" onclick="copyPix()">Copiar Chave PIX</button>
+            <div class="thank-you">Muito Obrigada!</div>
         </section>
 
-        <!--colocar as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
-                <h2>OU FAÇA UMA DOAÇÃO VIA PIX!!!</h2>
-            </div>
-            <div>
-                <h3>CNPJ = 03.722.251.0001-82</h3>
-            </div>
-            <div>
-                <H1>Muito Obrigada!</H1>
-            </div>
-        </section>
-
-        <!--colocar as patas aq--> <!--CSS-->
-
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
     </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-paws">
+                <span>🐾</span><span>🐾</span><span>🐾</span>
+            </div>
+            <p>© 2025 ACAPRA - Todos os direitos reservados</p>
+            <p>Telefone: (47) 9 8474-9433</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyPix() {
+            const pixCode = '03.722.251.0001-82';
+            navigator.clipboard.writeText(pixCode).then(() => {
+                alert('Chave PIX copiada para a área de transferência: ' + pixCode);
+            }).catch(err => {
+                console.error('Erro ao copiar texto: ', err);
+                alert('Não foi possível copiar a chave PIX. Por favor, copie manualmente: ' + pixCode);
+            });
+        }
+    </script>
 </body>
 </html>

@@ -3,157 +3,527 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADOÇÃO</title>
+    <title>Adoção - Adote um Amigo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s, opacity 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        nav img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+            filter: brightness(0) invert(1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .paw-divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #8A2BE2;
+        }
+        
+        .paw-divider span {
+            font-size: 28px;
+            margin: 0 10px;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(138, 43, 226, 0.1), rgba(147, 112, 219, 0.1));
+            border-radius: 15px;
+        }
+        
+        .hero-section h1 {
+            color: #8A2BE2;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 15px;
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .category-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .animal-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .animal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .animal-image {
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(120deg, #e0e0e0, #f0f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .animal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .animal-info {
+            padding: 25px;
+        }
+        
+        .animal-info h3 {
+            color: #8A2BE2;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .animal-info p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .animal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .animal-tag {
+            background: #f0e6ff;
+            color: #8A2BE2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-paws {
+            margin-bottom: 20px;
+        }
+        
+        .footer-paws span {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .adopt-button {
+            display: inline-block;
+            background: #8A2BE2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .adopt-button:hover {
+            background: #7a1bd2;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 900px) {
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            
+            .animals-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            nav {
+                gap: 15px;
+            }
+            
+            nav img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .hero-section {
+                padding: 30px 15px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .animal-info {
+                padding: 20px;
+            }
+            
+            .animal-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            nav {
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 6px 8px;
+                font-size: 0.9rem;
+            }
+            
+            nav img {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .category-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-     <header>
+    <header>
         <nav>
-            <a href="contato.html"><img src="assets/imagens/telefone.png" alt="CONTATO"></a>
-            <a href="sobre.html"><img src="assets/imagens/imagem.png" alt="SOBRE"></a>
-            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"></a>        
-            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"></a>
-            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"></a>
-            <a href="adocao.html"><img src="assets/imagens/lista.png" alt="ADOÇÃO"></a>
-            <a href="doacao.html"><img src="assets/imagens/doação.png" alt="DOAÇÃO"></a>
+            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"> INÍCIO</a>
+            <a href="sobre.html"><img src="assets/imagens/imagem.png" alt="SOBRE"> SOBRE</a>
+            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"> HISTÓRIA</a>        
+            <a href="adocao.html" class="active"><img src="assets/imagens/lista.png" alt="ADOÇÃO"> ADOÇÃO</a>
+            <a href="doacao.html"><img src="assets/imagens/doação.png" alt="DOAÇÃO"> DOAÇÃO</a>
+            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"> NOTÍCIAS</a>
+            <a href="contato.html"><img src="assets/imagens/telefone.png" alt="CONTATO"> CONTATO</a>
         </nav>
     </header>
+    
     <main>
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
-        <!--coloca as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
-                <h1>ANIMAIS<br>PARA ADOÇÃO!</h1>
-            </div>
+        <section class="hero-section">
+            <h1>ANIMAIS<br>PARA ADOÇÃO!</h1>
+            <p>Encontre seu novo melhor amigo e dê a ele um lar cheio de amor</p>
         </section>
 
-        <!--coloca as patas aq--> <!--CSS-->
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
-        <section>
-            <div>
-                <h2>GATOS</h2>
-            </div>
-        </section>
+        <div class="category-header">
+            <h2>GATOS</h2>
+        </div>
 
-        <section>
-            <div>
-                <h3>Difusor - macho, 6 meses, castrado e vacinado.</h3>
+        <div class="animals-grid">
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/gato1.jpeg" alt="Difusor - gato para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Difusor</h3>
+                    <p>Difusor é um gatinho macho, que foi encontrado em uma fábrica de peças automotivas (por isso o nome), chegou em estado caquético, com extrema magreza. Aos poucos foi se recuperando e hoje é um jovem 100% saudável e cheio de amor!</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Macho</span>
+                        <span class="animal-tag">6 meses</span>
+                        <span class="animal-tag">Castrado</span>
+                        <span class="animal-tag">Vacinado</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Difusor é um gatinho macho, que foi encontrado em uma fábrica de peças automotivas (por isso o nome), chegou em estado caquético, com extrema magreza. Aos poucos foi se recuperando e hoje é um jovem 100% saudável e cheio de amor! Se dá bem com outros animais (cães e gatos). Negativo para FIV e FELV.</p>
-            </div>
-            <div>
-                <img src="assets/imagens/gato1.jpeg" alt="gato" width="200px">
-            </div>
-        </section>
 
-        <section>
-            <div>
-                <h3>Luzia, fêmea, 2 anos. Castrada e vacinada - FELV +!</h3>
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/gato2.jpeg" alt="Luzia - gata para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Luzia</h3>
+                    <p>Luzia chegou até nós através de um pedido de ajuda, onde a pessoa que pediu ajuda relatava que tinha um "monstro" em sua casa. Quando fomos resgatar, descobrimos que esse "monstro" na verdade é uma linda princesa assustada e muito carinhosa!</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Fêmea</span>
+                        <span class="animal-tag">2 anos</span>
+                        <span class="animal-tag">Castrada</span>
+                        <span class="animal-tag">Vacinada</span>
+                        <span class="animal-tag">FELV+</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Luzia chegou até nós através de um pedido de ajuda, onde a pessoa que pediu ajuda relatava que tinha um “monstro” em sua casa. Quando fomos resgatar, descobrimos que esse “monstro”, na verdade é uma linda princesa assustada e muito carinhosa! Luzia é FELV + por isso precisa ser a única filha felina, ou ter outros irmãozinhos que também tenham FELV+.</p>
-            </div>
-            <div>
-                <img src="assets/imagens/gato2.jpeg" alt="gato" width="200px">
-            </div>
-        </section>
 
-        <section>
-            <div>
-                <h3>Bartô - Macho, 3 meses, vacinado.</h3>
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/gato3.jpeg" alt="Bartô - gato para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Bartô</h3>
+                    <p>Bartô foi resgatado junto com seus 4 irmãos e sua mamãe Angel. Estavam em situação de rua, e viviam em uma casa improvisada de plástico. Bartô foi o único que sobrou dos seus irmãos. É um filhote com muito amor e energia.</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Macho</span>
+                        <span class="animal-tag">3 meses</span>
+                        <span class="animal-tag">Vacinado</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Bartô foi resgatado junto com seus 4 irmãos e sua mamãe Angel. Estavam em situação de rua, e viviam em uma casa improvisada de plástico. Bartô foi o único que sobrou dos seus irmãos. É um filhote com muito amor e energia Negativo para FIV e FELV. </p>
-            </div>
-            <div>
-                <img src="assets/imagens/gato3.jpeg" alt="gato" width="200px">
-            </div>
-        </section>
 
-       <section>
-            <div>
-                <h3>Mimi - Fêmea, 1 ano. Castrada e Vacinada.</h3>
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/gato4.jpeg" alt="Mimi - gata para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Mimi</h3>
+                    <p>Mimi foi abandonada em uma residência, viveu um tempo na rua até ser resgatada. É uma gatinha muito amorosa e carente! Negativa para FIV e FELV.</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Fêmea</span>
+                        <span class="animal-tag">1 ano</span>
+                        <span class="animal-tag">Castrada</span>
+                        <span class="animal-tag">Vacinada</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Mimi foi abandonada em uma residência, viveu um tempo na rua até ser resgatada. É uma gatinha muito amorosa e carente!. Negativa para FIV e FELV.</p>
-            </div>
-            <div>
-                <img src="assets/imagens/gato4.jpeg" alt="gato" width="200px">
-            </div>
-        </section>
+        </div>
 
-        <!--colocar as patas aq--> <!--CSS-->
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
-        <section>
-            <div>
-                <h2>CACHORROS</h1>
-            </div>
-        </section>
+        <div class="category-header">
+            <h2>CACHORROS</h2>
+        </div>
 
-        <section>
-            <div>
-                <h3>Cléo e Glória - ADOÇÃO CONJUNTA. - Fêmeas, castradas e vacinadas. Porte GG. Cléo: 7 anos, Glória: 10 anos. Mãe e filha.</h3>
+        <div class="animals-grid">
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/cachorro1.jpeg" alt="Cléo e Glória - cachorras para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Cléo e Glória</h3>
+                    <p>Glória (mãe) e Cléo (filha), foram encontradas abandonadas na BR. São muito dóceis, amáveis e ativas, apesar da idade mais adulta, não apresentam problemas de saúde e são muito brincalhonas.</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">ADOÇÃO CONJUNTA</span>
+                        <span class="animal-tag">Fêmeas</span>
+                        <span class="animal-tag">Castradas</span>
+                        <span class="animal-tag">Vacinadas</span>
+                        <span class="animal-tag">Porte GG</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Glória (mãe) e Cléo (filha), foram encontradas abandonadas na BR. São muito dóceis, amáveis e ativas, apesar da idade mais adulta, não apresentam problemas de saúde e são muito brincalhonas. Precisam de um lar com muito amor, carinho e espaço, pois são duas cachorras grandes.</p>
-            </div>
-            <div>
-                <img src="assets/imagens/cachorro1.jpeg" alt="cachorro" width="100px">
-                <img src="assets/imagens/cachorro2.jpeg" alt="cachorro" width="100px">
-            </div>
-        </section>
 
-        <section>
-            <div>
-                <h3>Branca, Fêmea - 2 anos. Castrada e Vacinada. Porte G.</h3>
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/cachorro3.jpeg" alt="Branca - cadela para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Branca</h3>
+                    <p>Branca foi retirada de maus tratos, era usada de forma indevida para caça. É muito dócil, querida e brincalhona, mas apresenta um certo grau de medo. Precisa de um lar com muito amor, carinho e paciência.</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Fêmea</span>
+                        <span class="animal-tag">2 anos</span>
+                        <span class="animal-tag">Castrada</span>
+                        <span class="animal-tag">Vacinada</span>
+                        <span class="animal-tag">Porte G</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Branca foi retirada de maus tratos, era usada de forma indevida para caça. É muito dócil, querida e brincalhona, mas apresenta um certo grau de medo. Precisa de um lar com muito amor, carinho e paciência.</p>
-            </div>
-            <div>
-                <img src="assets/imagens/cachorro3.jpeg" alt="cachorro" width="200px">
-            </div>
-        </section>
 
-        <section>
-            <div>
-                <h3>Maia, 1 ano, Castrada e Vacinada. Porte G.</h3>
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/cachorro4.jpeg" alt="Maia - cadela para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Maia</h3>
+                    <p>Maia foi encontrada junto com sua irmã, Mavie, abandonada em Brusque. Foram resgatadas e agora Maia precisa de um lar com muito espaço, amor e carinho. É super carinhosa e protetora!</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Fêmea</span>
+                        <span class="animal-tag">1 ano</span>
+                        <span class="animal-tag">Castrada</span>
+                        <span class="animal-tag">Vacinada</span>
+                        <span class="animal-tag">Porte G</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Maia foi encontrada junto com sua irmã, Mavie, abandonada em Brusque. Foram resgatadas e agora Maia precisa de um lar com muito espaço, amor e carinho. É super carinhosa e protetora!</p>
-            </div>
-            <div>
-                <img src="assets/imagens/cachorro4.jpeg" alt="cachorro" width="200px">
-            </div>
-        </section>
 
-        <section>
-            <div>
-                <h3>Mavie, 1 ano, Castrada e Vacinada. Porte G.</h3>
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/cachorro5.jpeg" alt="Mavie - cadela para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Mavie</h3>
+                    <p>Mavie foi encontrada junto com sua irmã, Maia, abandonada em Brusque. Foram resgatadas e agora Mavie precisa de um lar com muito espaço, amor e carinho. É super carinhosa e protetora!</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Fêmea</span>
+                        <span class="animal-tag">1 ano</span>
+                        <span class="animal-tag">Castrada</span>
+                        <span class="animal-tag">Vacinada</span>
+                        <span class="animal-tag">Porte G</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Mavie foi encontrada junto com sua irmã, Maia, abandonada em Brusque. Foram resgatadas e agora Mavie precisa de um lar com muito espaço, amor e carinho. É super carinhosa e protetora!</p>
-            </div>
-            <div>
-                <img src="assets/imagens/cachorro5.jpeg" alt="cachorro" width="200px">
-            </div>
-        </section>
 
-        <section>
-            <div>
-                <h3>Luma, 3 anos - Castrada e Vacinada, Porte G.</h3>
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="assets/imagens/cachorro6.jpeg" alt="Luma - cadela para adoção">
+                </div>
+                <div class="animal-info">
+                    <h3>Luma</h3>
+                    <p>Luma vivia nas ruas com seu irmão Juca. Ele foi adotado, mas ela ainda segue esperando seu tão sonhado lar. Luma é puro amor e calmaria! Precisa de um lar com muito amor e carinho.</p>
+                    <div class="animal-tags">
+                        <span class="animal-tag">Fêmea</span>
+                        <span class="animal-tag">3 anos</span>
+                        <span class="animal-tag">Castrada</span>
+                        <span class="animal-tag">Vacinada</span>
+                        <span class="animal-tag">Porte G</span>
+                    </div>
+                    <a href="#" class="adopt-button">Quero adotar</a>
+                </div>
             </div>
-            <div>
-                <p>Luma vivia nas ruas com seu irmão Juca. Ele foi adotado, mas ela ainda segue esperando seu tão sonhado lar. Luma é puro amor e calmaria! Precisa de um lar com muito amor e carinho.</p>
-            </div>
-            <div>
-                <img src="assets/imagens/cachorro6.jpeg" alt="cachorro" width="200px">
-            </div>
-        </section>
+        </div>
 
-        <!--colocar as patas aq--> <!--CSS-->
-
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
     </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-paws">
+                <span>🐾</span><span>🐾</span><span>🐾</span>
+            </div>
+            <p>© 2025 ACAPRA - Todos os direitos reservados</p>
+            <p>Telefone: (47) 9 8474-9433</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

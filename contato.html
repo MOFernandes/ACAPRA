@@ -3,56 +3,476 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONTATO</title>
+    <title>Contato - Adote um Amigo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s, opacity 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        nav img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+            filter: brightness(0) invert(1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .paw-divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #8A2BE2;
+        }
+        
+        .paw-divider span {
+            font-size: 28px;
+            margin: 0 10px;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+        }
+        
+        .hero-section h1 {
+            color: #8A2BE2;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-section h2 {
+            color: #666;
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .contact-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0e6ff;
+            border-radius: 50%;
+            color: #8A2BE2;
+            font-size: 2rem;
+        }
+        
+        .contact-card p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background: #8A2BE2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .contact-button:hover {
+            background: #7a1bd2;
+            transform: translateY(-3px);
+        }
+        
+        .image-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-paws {
+            margin-bottom: 20px;
+        }
+        
+        .footer-paws span {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin: 50px 0;
+        }
+        
+        .form-section h2 {
+            color: #8A2BE2;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #8A2BE2;
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            grid-column: span 2;
+            background: #8A2BE2;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-button:hover {
+            background: #7a1bd2;
+        }
+        
+        @media (max-width: 900px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .submit-button {
+                grid-column: span 1;
+            }
+            
+            nav {
+                gap: 15px;
+            }
+            
+            nav img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .hero-section {
+                padding: 30px 15px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.2rem;
+            }
+            
+            .contact-card {
+                padding: 20px;
+            }
+            
+            .form-section {
+                padding: 25px;
+            }
+            
+            nav {
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 6px 8px;
+                font-size: 0.9rem;
+            }
+            
+            nav img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-     <header>
+    <header>
         <nav>
-            <a href="contato.html"><img src="assets/imagens/telefone.png" alt="CONTATO"></a>
-            <a href="sobre.html"><img src="assets/imagens/imagem.png" alt="SOBRE"></a>
-            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"></a>        
-            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"></a>
-            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"></a>
-            <a href="adocao.html"><img src="assets/imagens/lista.png" alt="ADOÇÃO"></a>
-            <a href="doacao.html"><img src="assets/imagens/doação.png" alt="DOAÇÃO"></a>
+            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"> INÍCIO</a>
+            <a href="sobre.html"><img src="assets/imagens/imagem.png" alt="SOBRE"> SOBRE</a>
+            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"> HISTÓRIA</a>        
+            <a href="adocao.html"><img src="assets/imagens/lista.png" alt="ADOÇÃO"> ADOÇÃO</a>
+            <a href="doacao.html"><img src="assets/imagens/doação.png" alt="DOAÇÃO"> DOAÇÃO</a>
+            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"> NOTÍCIAS</a>
+            <a href="contato.html" class="active"><img src="assets/imagens/telefone.png" alt="CONTATO"> CONTATO</a>
         </nav>
     </header>
-     <main> 
+    
+    <main>
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
-         <!--colocar as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
-                <h1>FICOU ALGUMA DÚVIDA?</h1>
-            </div>
-            <div>
-                <h2>Entre em contato conosco pelas<br>nossas redes!</h2>
-            </div>
+        <section class="hero-section">
+            <h1>FICOU ALGUMA DÚVIDA?</h1>
+            <h2>Entre em contato conosco pelas<br>nossas redes!</h2>
         </section>
 
-        <section>
-            <div>
+        <div class="contact-section">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
                 <p>@acaprabrusquesc</p>
-                <img src="assets/imagens/instaicon.png" alt="instagram" width="80px">
+                <a href="https://www.instagram.com/acaprabrusquesc" target="_blank" class="contact-button">Seguir no Instagram</a>
             </div>
-            <div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
                 <p>(47) 9 8474-9433</p>
-                <img src="assets/imagens/zapicon.png" alt="whatsapp" width="80px">
+                <a href="https://wa.me/5547984749433" target="_blank" class="contact-button">Enviar mensagem</a>
             </div>
-            <div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
                 <p>(47) 9 9673-6046</p>
-                <img src="assets/imagens/zapicon.png" alt="whatsapp" width="80px">
+                <a href="https://wa.me/5547996736046" target="_blank" class="contact-button">Enviar mensagem</a>
             </div>
+        </div>
+
+        <section class="form-section">
+            <h2>Envie uma mensagem</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" placeholder="Seu nome completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="subject">Assunto</label>
+                    <input type="text" id="subject" placeholder="Assunto da mensagem" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Enviar mensagem</button>
+            </form>
         </section>
 
-        <section>
-            <div>
-                <img src="assets/imagens/animais.png" alt="animais" width="300px">
-            </div>
+        <section class="image-section">
+            <img src="assets/imagens/animais.png" alt="Animais para adoção">
         </section>
 
-         <!--colocar as patas aq--> <!--CSS-->
-        
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
     </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-paws">
+                <span>🐾</span><span>🐾</span><span>🐾</span>
+            </div>
+            <p>© 2025 ACAPRA - Todos os direitos reservados</p>
+            <p>Telefone: (47) 9 8474-9433</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/acaprabrusquesc" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>

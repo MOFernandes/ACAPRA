@@ -3,55 +3,483 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOBRE</title>
+    <title>Sobre - ACAPRA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s, opacity 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        nav img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+            filter: brightness(0) invert(1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .paw-divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #8A2BE2;
+        }
+        
+        .paw-divider span {
+            font-size: 28px;
+            margin: 0 10px;
+        }
+        
+        .about-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .about-section h2 {
+            color: #8A2BE2;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .about-text {
+            text-align: left;
+        }
+        
+        .about-text p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-header {
+            margin-bottom: 40px;
+        }
+        
+        .stats-header p {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-item p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .stats-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .stats-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .stats-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .mission-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .mission-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mission-card h3 {
+            color: #8A2BE2;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .mission-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .mission-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: #f0e6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8A2BE2;
+            font-size: 1.8rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-paws {
+            margin-bottom: 20px;
+        }
+        
+        .footer-paws span {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 900px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-text {
+                text-align: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-section {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                gap: 15px;
+            }
+            
+            nav img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .about-section, .stats-section, .mission-card {
+                padding: 25px 20px;
+            }
+            
+            .about-section h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-header p {
+                font-size: 1.5rem;
+            }
+            
+            .stats-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            nav {
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 6px 8px;
+                font-size: 0.9rem;
+            }
+            
+            nav img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-     <header>
+    <header>
         <nav>
-            <a href="contato.html"><img src="assets/imagens/telefone.png" alt="CONTATO"></a>
-            <a href="sobre.html"><img src="assets/imagens/imagem.png" alt="SOBRE"></a>
-            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"></a>        
-            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"></a>
-            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"></a>
-            <a href="adocao.html"><img src="assets/imagens/lista.png" alt="ADOÇÃO"></a>
-            <a href="doacao.html"><img src="assets/imagens/doação.png" alt="DOAÇÃO"></a>
+            <a href="index.html"><img src="assets/imagens/acapra.png" alt="INÍCIO"> INÍCIO</a>
+            <a href="sobre.html" class="active"><img src="assets/imagens/imagem.png" alt="SOBRE"> SOBRE</a>
+            <a href="historia.html"><img src="assets/imagens/pata.png" alt="HISTÓRIA"> HISTÓRIA</a>        
+            <a href="adocao.html"><img src="assets/imagens/lista.png" alt="ADOÇÃO"> ADOÇÃO</a>
+            <a href="doacao.html"><img src="assets/imagens/doação.png" alt="DOAÇÃO"> DOAÇÃO</a>
+            <a href="noticias.html"><img src="assets/imagens/noticia.png" alt="NOTÍCIAS"> NOTÍCIAS</a>
+            <a href="contato.html"><img src="assets/imagens/telefone.png" alt="CONTATO"> CONTATO</a>
         </nav>
     </header>
+    
     <main>
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
-        <!--colocar as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
-                <h2>Sobre ACAPRA</h2>
-            </div>
-            <div>
-                <p>A Associação Brusquense de Proteção aos Animais (Acapra) é uma entidade sem fins lucrativos voltada ao cuidado e defesa dos animais em Brusque, Santa Catarina. Criada no ano 2000, sua principal missão é resgatar, recuperar e incentivar a adoção de animais em situação de abandono ou vítimas de maus-tratos. Além disso, a organização busca conscientizar a população sobre a importância da guarda responsável e do respeito aos bichos.</p>
-                <img src="assets/imagens/foto_cachorro1.jpeg" alt="BRANCA" width="350px">
-            </div>
-        </section>
-
-        <!--colocar as patas aq--> <!--CSS-->
-
-        <section>
-            <div>
-                <P>ESTATÍSTICAS SOBRE NÓS!</P>
-            </div>
-            <div>
-                <p>Adoções realizadas: +1.200 (e crescendo!)</p>
-                <p>Animais disponíveis para adoção: 350 a espera de um lar!</p>
-                <p>Estimativa de animais em situação de rua: +5.000</p>
-                <p>Castrações realizadas: +3.000</p>
-                <p>Atendimentos veterinários: +8.500</p>
-            </div>
-            <div>
-                <img src="assets/imagens/dogicon.png" alt="dogicon" width="90px">
-                <img src="assets/imagens/caticon.png" alt="caticon" width="90px">
+        <section class="about-section">
+            <h2>Sobre ACAPRA</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A Associação Brusquense de Proteção aos Animais (Acapra) é uma entidade sem fins lucrativos voltada ao cuidado e defesa dos animais em Brusque, Santa Catarina. Criada no ano 2000, sua principal missão é resgatar, recuperar e incentivar a adoção de animais em situação de abandono ou vítimas de maus-tratos. Além disso, a organização busca conscientizar a população sobre a importância da guarda responsável e do respeito aos bichos.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/imagens/foto_cachorro1.jpeg" alt="BRANCA - Cachorra resgatada pela ACAPRA">
+                </div>
             </div>
         </section>
 
-        <!--colocar as patas aq--> <!--CSS-->
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
 
+        <section class="stats-section">
+            <div class="stats-header">
+                <p>ESTATÍSTICAS SOBRE NÓS!</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <p>Adoções realizadas: +1.200 (e crescendo!)</p>
+                </div>
+                
+                <div class="stat-item">
+                    <p>Animais disponíveis para adoção: 350 a espera de um lar!</p>
+                </div>
+                
+                <div class="stat-item">
+                    <p>Estimativa de animais em situação de rua: +5.000</p>
+                </div>
+                
+                <div class="stat-item">
+                    <p>Castrações realizadas: +3.000</p>
+                </div>
+                
+                <div class="stat-item">
+                    <p>Atendimentos veterinários: +8.500</p>
+                </div>
+            </div>
+            
+            <div class="stats-icons">
+                <div class="stats-icon">🐕</div>
+                <div class="stats-icon">🐈</div>
+            </div>
+        </section>
+
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
+
+        <div class="mission-section">
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Nossa Missão</h3>
+                <p>Resgatar, recuperar e encontrar lares responsáveis para animais em situação de vulnerabilidade, promovendo a conscientização sobre posse responsável e bem-estar animal.</p>
+            </div>
+            
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Nossa Visão</h3>
+                <p>Ser referência em proteção animal na região, reduzindo significativamente o número de animais abandonados e promovendo uma sociedade mais consciente e compassiva.</p>
+            </div>
+            
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3>Nossos Valores</h3>
+                <p>Comprometimento, compaixão, transparência e perseverança na defesa dos animais, sempre priorizando seu bem-estar e dignidade.</p>
+            </div>
+        </div>
+
+        <div class="paw-divider">
+            <span>🐾</span><span>🐾</span><span>🐾</span>
+        </div>
     </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-paws">
+                <span>🐾</span><span>🐾</span><span>🐾</span>
+            </div>
+            <p>© 2025 ACAPRA - Todos os direitos reservados</p>
+            <p>Telefone: (47) 9 8474-9433</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
